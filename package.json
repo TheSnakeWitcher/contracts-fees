@@ -1,0 +1,39 @@
+{
+    "name": "fee-management",
+    "version": "0.11.43",
+    "description": "fee management contracts",
+    "license": "MIT",
+    "repository": "github:TheSnakeWitcher/fee-management",
+    "author": "TheSnakeWitcher",
+    "keywords": [
+        "ethereum",
+        "smart-contracts",
+        "deployment",
+        "test",
+        "testing",
+        "tool",
+        "hardhat",
+        "hardhat-deploy",
+        "hardhat-plugin"
+    ],
+    "scripts": {
+        "prepare": "node ./.setup.js",
+        "compile": "hardhat compile",
+        "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
+        "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
+        "format": "prettier --write \"**/*.{ts,js,sol}\"",
+        "test": "mocha --timeout 20000 --exit",
+        "build": "tsc",
+        "watch": "tsc -w",
+        "publish:next": "npm publish --tag next",
+        "publish:release": "npm publish",
+        "prepublishOnly": "npm run build"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.9.3"
+    },
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+        "hardhat": "^2.17.2"
+    }
+}
