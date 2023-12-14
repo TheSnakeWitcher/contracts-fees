@@ -4,11 +4,12 @@ pragma abicoder v2;
 
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol" ;
+import "@openzeppelin/contracts/utils/Context.sol" ;
 
 
-contract FeeChargerOptionERC20 is Context {
+contract FeeChargerComponentERC20 is Context {
 
-    IERC20 private _feeToken ;
+    IERC20 internal _feeToken ;
 
     event FeeTokenChanged(address oldFeeToken, address newFeeToken) ;
     event FeeCharged(address indexed feePayer,address indexed feeTokenCharged, uint256 feeAmount) ;

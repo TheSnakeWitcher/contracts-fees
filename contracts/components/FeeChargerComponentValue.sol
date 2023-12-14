@@ -2,10 +2,11 @@
 pragma solidity ^0.8.18 ;
 pragma abicoder v2;
 
+import "@openzeppelin/contracts/utils/Context.sol" ;
 
-contract FeeChargerOptionValue is Context {
+contract FeeChargerComponentValue is Context {
 
-    error InsufficientMsgValue() ;
+    error InsufficientValue() ;
 
     event FeeCharged(address indexed feePayer, uint256 amount) ;
 

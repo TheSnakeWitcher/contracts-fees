@@ -2,14 +2,12 @@
 pragma solidity ^0.8.18 ;
 pragma abicoder v2;
 
-// import "./IFeeCharger.sol"
-
 /**
- * @title FeeChargerStaticAmount
+ * @title FeeChargerComponentAmountStatic
  * @dev No access control mechanis is used by default, it must be configured by
  *      developer according to applications needs
  */
-abstract contract FeeChargerOptionAmountStatic {
+abstract contract FeeChargerComponentAmountStatic {
 
     event FeeAmountChanged(uint256 oldFeeAmount, uint256 newFeeAmount) ;
 

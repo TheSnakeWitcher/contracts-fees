@@ -4,22 +4,20 @@ pragma abicoder v2;
 
 
 import "@openzeppelin/contracts/utils/Address.sol" ;
-import { FeeChargerOptionAmountStatic } from "./options/FeeChargerOptionAmountStatic.sol" ;
-import { FeeChargerOptionValue } from "./options/FeeChargerOptionValue.sol" ;
+import { FeeChargerComponentAmountStatic } from "./components/FeeChargerComponentAmountStatic.sol" ;
+import { FeeChargerComponentValue } from "./components/FeeChargerComponentValue.sol" ;
 
 
-contract FeeChargerValue is FeeChargerOptionValue, FeeChargerOptionAmountStatic {
+contract FeeChargerValue is FeeChargerComponentValue, FeeChargerComponentAmountStatic {
 
     using Address for address payable ;
 
-    constructor(uint256 feeAmount_) FeeChargerOptionAmountStatic(feeAmount_) {}
+    constructor(uint256 feeAmount_) FeeChargerComponentAmountStatic(feeAmount_) {}
 
-    /**
-     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
-     */
-    function _chargeFees(address feeCollector) internal virtual override {
+    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    function _chargeFees(address feeCollector) internal virtual {
         uint256 fee = feeAmount()  ;
-        if ( msg.value < fee ) revert InsufficientMsgValue() ;
+        if ( msg.value < fee ) revert InsufficientValue() ;
 
         payable(feeCollector).sendValue(fee) ;
         emit FeeCharged(_msgSender(),fee) ;
