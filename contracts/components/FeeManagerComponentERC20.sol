@@ -19,12 +19,21 @@ contract FeeManagerComponentERC20 is Context {
         return _defaultFeeToken ;
     }
 
+    /**
+     * @param feeCollector is one of a set of managed fee collectors
+     * @return feeToken corresponding to `feeCollector`
+     * @dev return defaultFeeToken if no `feeToken` is set for `feeCollector`
+     */
     function feeToken(address feeCollector) public view returns (IERC20) {
         IERC20 token = _feeToken[feeCollector] ;
         if (address(token) != address(0) ) return token ;
         return _defaultFeeToken ;
     }
 
+    /**
+     * @param feeCollector is the fee collectors to set the fee to
+     * @param newFeeToken in which specified `feeCollector` will charge fees
+     */
     function _setFeeToken(address feeCollector, address newFeeToken) internal {
         address oldFeeToken = address(feeToken(feeCollector)) ;
         _feeToken[feeCollector] = IERC20(newFeeToken) ;
