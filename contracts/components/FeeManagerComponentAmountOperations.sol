@@ -19,14 +19,26 @@ abstract contract FeeManagerComponentAmountOperations {
         _feeAmounts[DEFAULT_FEE_COLLECTOR][DEFAULT_OPERATION] = defaultFeeAmount_ ;
     }
 
+    function defaultFeeAmount() public view virtual returns (uint256) {
+        return _feeAmounts[DEFAULT_FEE_COLLECTOR][DEFAULT_OPERATION] ;
+    }
+
+    function defaultFeeAmount(address feeCollector) public view virtual returns (uint256) {
+        return _feeAmounts[feeCollector][DEFAULT_OPERATION] ;
+    }
+
     function feeAmount(address feeCollector, bytes4 functionSelector) public view virtual returns (uint256) {
         uint256 fee = _feeAmounts[feeCollector][functionSelector] ;
         if (fee != 0) return fee ;
 
-        fee = _feeAmounts[feeCollector][DEFAULT_OPERATION] ;
+        fee = defaultFeeAmount(feeCollector) ;
         if ( fee != 0 ) return fee ;
 
-        return _feeAmounts[DEFAULT_FEE_COLLECTOR][DEFAULT_OPERATION];
+        return defaultFeeAmount();
+    }
+
+    function _setDefaultFeeAmount(uint256 newFeeAmount) internal virtual {
+        _setFeeAmount(DEFAULT_FEE_COLLECTOR, DEFAULT_OPERATION, newFeeAmount) ;
     }
 
     function _setDefaultFeeAmount(address feeCollector, uint256 newFeeAmount) internal virtual {
