@@ -1,9 +1,9 @@
 {
-    "name": "fee-management",
+    "name": "libfees",
     "version": "0.11.43",
     "description": "fee management contracts",
     "license": "MIT",
-    "repository": "github:TheSnakeWitcher/fee-management",
+    "repository": "github:TheSnakeWitcher/libfees",
     "author": "TheSnakeWitcher",
     "keywords": [
         "ethereum",
@@ -34,6 +34,7 @@
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-        "hardhat": "^2.17.2"
+        "hardhat": "^2.19.3",
+        "solidity-docgen": "0.6.0-beta.36"
     }
 }
