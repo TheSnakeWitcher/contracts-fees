@@ -7,16 +7,23 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol" ;
 import "@openzeppelin/contracts/utils/Context.sol" ;
 
 
+bytes4 constant DEFAULT_OPERATION = bytes4(0) ;
+address constant DEFAULT_FEE_COLLECTOR = address(0) ;
+
+
 contract FeeManagerComponentERC20 is Context {
 
-    IERC20 private _defaultFeeToken ;
     mapping(address feeCollector => IERC20 feeToken) internal _feeToken ;
 
     event FeeTokenChanged(address indexed feeCollector, address oldFeeToken, address newFeeToken) ;
     event FeeCharged(address indexed feeCollector, address indexed feePayer,address indexed feeTokenCharged, uint256 feeAmount) ;
 
+    constructor(address defaultfeeToken_) {
+        _feeToken[DEFAULT_FEE_COLLECTOR] = IERC20(defaultfeeToken_) ;
+    }
+
     function defaultFeeToken() public view returns (IERC20) {
-        return _defaultFeeToken ;
+        return _feeToken[DEFAULT_FEE_COLLECTOR] ;
     }
 
     /**
@@ -27,7 +34,14 @@ contract FeeManagerComponentERC20 is Context {
     function feeToken(address feeCollector) public view returns (IERC20) {
         IERC20 token = _feeToken[feeCollector] ;
         if (address(token) != address(0) ) return token ;
-        return _defaultFeeToken ;
+        return defaultFeeToken() ;
+    }
+
+    /**
+     * @param newFeeToken in which specified `feeCollector` will charge fees
+     */
+    function _setDefaultFeeToken(address newFeeToken) internal {
+        _setFeeToken(DEFAULT_FEE_COLLECTOR, newFeeToken) ;
     }
 
     /**
