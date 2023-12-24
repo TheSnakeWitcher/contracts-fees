@@ -17,7 +17,7 @@ contract FeeManagerValue is FeeManagerComponentValue, FeeManagerComponentAmountS
         uint256 fee = feeAmount(feeCollector) ;
         if ( msg.value < fee ) revert InsufficientValue() ;
 
-        payable(feePayer).sendValue(feeReceiver, fee) ;
+        payable(feeReceiver).sendValue(fee) ;
         emit FeeCharged(feeCollector, feePayer, fee) ;
     }
 
