@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/utils/Context.sol" ;
 
 contract FeeManagerComponentERC20 is Context {
 
-    mapping(address feeCollector => IERC20 feeToken) private _feeToken ;
+    mapping(address feeCollector => IERC20 feeToken) internal _feeToken ;
 
     event FeeTokenChanged(address indexed feeCollector, address oldFeeToken, address newFeeToken) ;
     event FeeCharged(address indexed feeCollector, address indexed feePayer,address indexed feeTokenCharged, uint256 feeAmount) ;
