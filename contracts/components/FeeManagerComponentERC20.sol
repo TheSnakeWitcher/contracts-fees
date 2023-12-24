@@ -19,7 +19,7 @@ contract FeeManagerComponentERC20 is Context {
     }
 
     function _setFeeToken(address feeCollector, address newFeeToken) internal {
-        address oldFeeToken = feeToken(feeCollector);
+        address oldFeeToken = address(feeToken(feeCollector)) ;
         _feeToken[feeCollector] = IERC20(newFeeToken) ;
         emit FeeTokenChanged(feeCollector, oldFeeToken, newFeeToken) ;
     }
