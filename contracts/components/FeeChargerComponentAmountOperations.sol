@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18 ;
+pragma solidity ^0.8.23 ;
 pragma abicoder v2;
 
 
@@ -8,7 +8,7 @@ bytes4 constant DEFAULT_OPERATION = bytes4(0) ;
 
 /**
  * @title FeeChargerComponentAmountOperations
- * @dev No access control mechanis is used by default, it must be configured by
+ * @dev No access control mechanism is used by default, it must be configured by
  *      developer according to applications needs
  */
 abstract contract FeeChargerComponentAmountOperations {

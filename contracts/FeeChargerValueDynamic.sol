@@ -1,22 +1,20 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18 ;
+pragma solidity ^0.8.23 ;
 pragma abicoder v2;
 
 
 import "@openzeppelin/contracts/utils/Address.sol" ;
-import { FeeChargerOptionValue } from "./options/FeeChargerOptionValue.sol" ;
+import { FeeChargerComponentValue } from "./components/FeeChargerComponentValue.sol" ;
 
 
-contract FeeChargerValueDynamic is FeeChargerOptionValue {
+abstract contract FeeChargerValueDynamic is FeeChargerComponentValue {
 
     using Address for address payable ;
 
-    /**
-     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
-     */
+    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, bytes calldata feeParams) internal virtual {
         uint256 fee = _calculateFee(feeParams)  ;
-        if ( msg.value < fee ) revert InsufficientMsgValue() ;
+        if ( msg.value < fee ) revert InsufficientValue() ;
 
         payable(feeCollector).sendValue(fee) ;
         emit FeeCharged(_msgSender(),fee) ;
