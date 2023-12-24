@@ -12,6 +12,8 @@ contract FeeManagerValue is FeeManagerComponentValue, FeeManagerComponentAmountS
 
     using Address for address payable ;
 
+    constructor(uint256 defaultFeeAmount_) FeeManagerComponentAmountStatic(defaultFeeAmount_) {}
+
     /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, address feePayer, address feeReceiver) internal virtual {
         uint256 fee = feeAmount(feeCollector) ;
