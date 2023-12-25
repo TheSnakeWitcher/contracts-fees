@@ -14,7 +14,10 @@ contract FeeChargerValue is FeeChargerComponentValue, FeeChargerComponentAmountS
 
     constructor(uint256 feeAmount_) FeeChargerComponentAmountStatic(feeAmount_) {}
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /**
+     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`.
+     *      Must be called in a external or public payable function
+     */
     function _chargeFees(address feeReceiver) internal virtual {
         uint256 fee = feeAmount()  ;
         if ( msg.value < fee ) revert InsufficientValue() ;
