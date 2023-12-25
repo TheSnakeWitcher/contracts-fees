@@ -12,7 +12,7 @@ contract FeeChargerValue is FeeChargerComponentValue, FeeChargerComponentAmountS
 
     using Address for address payable ;
 
-    constructor(uint256 defaultFeeAmount_) FeeChargerComponentAmountStatic(defaultFeeAmount_) {}
+    constructor(uint256 feeAmount_) FeeChargerComponentAmountStatic(feeAmount_) {}
 
     /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeReceiver) internal virtual {
