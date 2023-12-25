@@ -9,7 +9,7 @@ contract MockFeeChargerValue is FeeChargerValue {
 
     constructor(uint256 feeAmount_) FeeChargerValue(feeAmount_) {}
 
-    function chargeFees(address feeReceiver) public {
+    function chargeFees(address feeReceiver) public payable {
         _chargeFees(feeReceiver);
     }
 
