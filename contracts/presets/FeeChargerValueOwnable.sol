@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/access/Ownable.sol" ;
 import { FeeChargerValue } from "../FeeChargerValue.sol" ;
 
 
-/// @title FeeManagerValueOwnable
-contract FeeManagerValueOwnable is FeeChargerValue, Ownable {
+/// @title FeeChargerValueOwnable
+contract FeeChargerValueOwnable is FeeChargerValue, Ownable {
 
     constructor(uint256 feeAmount_, address owner_) FeeChargerValue(feeAmount_) Ownable(owner_) {}
 
