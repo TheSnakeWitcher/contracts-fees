@@ -9,9 +9,9 @@ pragma abicoder v2;
  */
 abstract contract FeeChargerComponentAmountStatic {
 
-    event FeeAmountChanged(uint256 oldFeeAmount, uint256 newFeeAmount) ;
-
     uint256 private _feeAmount ;
+
+    event FeeAmountChanged(uint256 oldFeeAmount, uint256 newFeeAmount) ;
 
     constructor(uint256 feeAmount_) {
         _feeAmount = feeAmount_ ;

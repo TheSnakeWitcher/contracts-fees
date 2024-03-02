@@ -10,10 +10,10 @@ address constant DEFAULT_FEE_COLLECTOR = address(0) ;
 /// @title FeeManagerComponentAmountOperations
 abstract contract FeeManagerComponentAmountOperations {
 
+    mapping(address feeCollector => mapping(bytes4 functionSelector => uint256 feeAmount)) _feeAmounts ;
+
     event FeeAmountChanged(address feeCollector, bytes4 indexed functionSelector, uint256 oldFeeAmount, uint256 newFeeAmount) ;
     event FeeAmountsChanged(address feeCollector, bytes4[] indexed functionSelectors, uint256[] oldFeeAmounts, uint256[] newFeeAmounts) ;
-
-    mapping(address feeCollector => mapping(bytes4 functionSelector => uint256 feeAmount)) _feeAmounts ;
 
     constructor(uint256 defaultFeeAmount_) {
         _feeAmounts[DEFAULT_FEE_COLLECTOR][DEFAULT_OPERATION] = defaultFeeAmount_ ;

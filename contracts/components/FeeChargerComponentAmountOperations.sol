@@ -13,9 +13,9 @@ bytes4 constant DEFAULT_OPERATION = bytes4(0) ;
  */
 abstract contract FeeChargerComponentAmountOperations {
 
-    event FeeAmountChanged(bytes4 indexed functionSelector, uint256 oldFeeAmount, uint256 newFeeAmount) ;
-
     mapping(bytes4 functionSelector => uint256 fee) _feeAmounts ;
+
+    event FeeAmountChanged(bytes4 indexed functionSelector, uint256 oldFeeAmount, uint256 newFeeAmount) ;
 
     constructor(uint256 feeAmount_) {
         _feeAmounts[DEFAULT_OPERATION] = feeAmount_ ;
