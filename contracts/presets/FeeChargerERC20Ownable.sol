@@ -20,8 +20,4 @@ contract FeeChargerERC20Ownable is FeeChargerERC20, Ownable {
         _setFeeAmount(newFeeAmount);
     }
 
-    function chargeFees(address feeCollector) external virtual onlyOwner {
-        _chargeFees(feeCollector) ;
-    }
-
 }

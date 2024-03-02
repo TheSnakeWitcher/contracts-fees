@@ -16,8 +16,4 @@ contract FeeChargerValueOwnable is FeeChargerValue, Ownable {
         _setFeeAmount(newFeeAmount);
     }
 
-    function chargeFees(address feeReceiver) external virtual onlyOwner {
-        _chargeFees(feeReceiver);
-    }
-
 }

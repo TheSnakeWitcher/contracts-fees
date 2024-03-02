@@ -12,10 +12,6 @@ contract FeeManagerValueOwnable is FeeManagerValue, Ownable {
 
     constructor(uint256 defaultfeeAmount_, address owner_) FeeManagerValue(defaultfeeAmount_) Ownable(owner_) {}
 
-    function chargeFees(address feeCollector,address feePayer, address feeReceiver) external virtual onlyOwner {
-        _chargeFees(feeCollector,feePayer, feeReceiver);
-    }
-
     function setDefaultFeeAmount(uint256 newFeeAmount) external virtual onlyOwner {
         _setDefaultFeeAmount(newFeeAmount);
     }
