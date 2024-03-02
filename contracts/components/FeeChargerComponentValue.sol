@@ -10,4 +10,8 @@ contract FeeChargerComponentValue is Context {
 
     event FeeCharged(address indexed feePayer, uint256 amount) ;
 
+    function _checkValue(uint256 fee) internal view {
+        if ( msg.value < fee ) revert InsufficientValue() ;
+    }
+
 }
