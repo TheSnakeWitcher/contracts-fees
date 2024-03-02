@@ -2,6 +2,7 @@
 pragma solidity ^0.8.23 ;
 pragma abicoder v2;
 
+
 /**
  * @title FeeChargerComponentAmountStatic
  * @dev No access control mechanis is used by default, it must be configured by
