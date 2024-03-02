@@ -17,7 +17,7 @@ contract FeeManagerValue is FeeManagerComponentValue, FeeManagerComponentAmountS
     /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, address feePayer, address feeReceiver) internal virtual {
         uint256 fee = feeAmount(feeCollector) ;
-        if ( msg.value < fee ) revert InsufficientValue() ;
+        _checkValue(fee) ;
 
         payable(feeReceiver).sendValue(fee) ;
         emit FeeCharged(feeCollector, feePayer, fee) ;
