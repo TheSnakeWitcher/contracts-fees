@@ -3,7 +3,7 @@ pragma solidity ^0.8.23 ;
 pragma abicoder v2;
 
 
-bytes4 constant DEFAULT_OPERATION = bytes4(0) ;
+import "./constants.sol" ;
 
 
 /**

@@ -7,8 +7,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol" ;
 import "@openzeppelin/contracts/utils/Context.sol" ;
 
 
-bytes4 constant DEFAULT_OPERATION = bytes4(0) ;
-address constant DEFAULT_FEE_COLLECTOR = address(0) ;
+import "./constants.sol" ;
 
 
 contract FeeManagerComponentERC20 is Context {
