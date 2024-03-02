@@ -14,7 +14,7 @@ abstract contract FeeChargerValueDynamic is FeeChargerComponentValue {
     /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, bytes calldata feeParams) internal virtual {
         uint256 fee = _calculateFee(feeParams)  ;
-        if ( msg.value < fee ) revert InsufficientValue() ;
+        _checkValue(fee) ;
 
         payable(feeCollector).sendValue(fee) ;
         emit FeeCharged(_msgSender(),fee) ;

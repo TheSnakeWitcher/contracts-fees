@@ -20,7 +20,7 @@ contract FeeChargerValue is FeeChargerComponentValue, FeeChargerComponentAmountS
      */
     function _chargeFees(address feeReceiver) internal virtual {
         uint256 fee = feeAmount()  ;
-        if ( msg.value < fee ) revert InsufficientValue() ;
+        _checkValue(fee) ;
 
         payable(feeReceiver).sendValue(fee) ;
         emit FeeCharged(_msgSender(),fee) ;

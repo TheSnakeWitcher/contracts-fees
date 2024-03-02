@@ -22,7 +22,7 @@ contract FeeChargerOperationsValue is FeeChargerComponentValue, FeeChargerCompon
     /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, bytes4 functionSelector) internal virtual {
         uint256 fee = feeAmount(functionSelector)  ;
-        if ( msg.value < fee ) revert InsufficientValue() ;
+        _checkValue(fee) ;
 
         payable(feeCollector).sendValue(fee) ;
         emit FeeCharged(_msgSender(), fee) ;
