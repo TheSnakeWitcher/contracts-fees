@@ -17,7 +17,7 @@ abstract contract FeeManagerComponentAmountStatic {
         _feeAmount[DEFAULT_FEE_COLLECTOR] = defaultFeeAmount_ ;
     }
 
-    function feeAmount() public view virtual returns (uint256) {
+    function defaultFeeAmount() public view virtual returns (uint256) {
         return _feeAmount[DEFAULT_FEE_COLLECTOR] ;
     }
 
@@ -25,7 +25,7 @@ abstract contract FeeManagerComponentAmountStatic {
     function feeAmount(address feeCollector) public view virtual returns (uint256) {
         uint256 fee = _feeAmount[feeCollector] ;
         if (fee != 0) return fee ;
-        return feeAmount() ;
+        return defaultFeeAmount() ;
     }
 
     function _setDefaultFeeAmount(uint256 newFeeAmount) internal virtual {
