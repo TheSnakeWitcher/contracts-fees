@@ -15,12 +15,12 @@ contract FeeChargerERC20Operations is FeeChargerComponentERC20, FeeChargerCompon
 
     constructor(address feeToken_,uint256 feeAmount_) FeeChargerComponentERC20(feeToken_) FeeChargerComponentAmountOperations(feeAmount_) {}
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /// @dev Non `address(0)-destination-safe`
     function _chargeFees(address feeCollector) internal {
-        _chargeFees(feeCollector,DEFAULT_OPERATION);
+        _chargeFees(feeCollector, DEFAULT_OPERATION);
     }
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /// @dev Non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, bytes4 functionSelector) internal virtual {
         address feePayer = _msgSender() ;
         uint256 fee = feeAmount(functionSelector) ;

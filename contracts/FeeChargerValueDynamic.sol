@@ -11,7 +11,11 @@ abstract contract FeeChargerValueDynamic is FeeChargerComponentValue {
 
     using Address for address payable ;
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /**
+     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`. Must be called in a
+     *      external or public payable function.All ether left over at the end of transaction
+     *      when calling a payable function is keep in the called contract
+     */ 
     function _chargeFees(address feeCollector, bytes calldata feeParams) internal virtual {
         uint256 fee = _calculateFee(feeParams)  ;
         _checkValue(fee) ;

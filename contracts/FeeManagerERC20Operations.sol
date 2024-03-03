@@ -14,7 +14,7 @@ contract FeeManagerERC20 is FeeManagerComponentERC20, FeeManagerComponentAmountO
 
     constructor(address defaultFeeToken_, uint256 defaultFeeAmount_) FeeManagerComponentERC20(defaultFeeToken_) FeeManagerComponentAmountOperations(defaultFeeAmount_) {}
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /// @dev Non `address(0)-destination-safe`
     function _chargeFees(address feeCollector,bytes4 functionSelector, address feePayer, address feeReceiver) internal virtual {
         uint256 fee = feeAmount(feeCollector, functionSelector) ;
         IERC20 token = feeToken(feeCollector) ;

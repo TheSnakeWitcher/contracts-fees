@@ -15,9 +15,10 @@ contract FeeChargerValue is FeeChargerComponentValue, FeeChargerComponentAmountS
     constructor(uint256 feeAmount_) FeeChargerComponentAmountStatic(feeAmount_) {}
 
     /**
-     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`.
-     *      Must be called in a external or public payable function
-     */
+     * @dev Non `reentrancy-safe` and non `address(0)-destination-safe`. Must be called in a
+     *      external or public payable function.All ether left over at the end of transaction
+     *      when calling a payable function is keep in the called contract
+     */ 
     function _chargeFees(address feeReceiver) internal virtual {
         uint256 fee = feeAmount()  ;
         _checkValue(fee) ;

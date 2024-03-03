@@ -14,7 +14,7 @@ abstract contract FeeChargerERC20Dynamic is FeeChargerComponentERC20 {
 
     constructor(address feeToken_) FeeChargerComponentERC20(feeToken_) {}
 
-    /// @dev Non `reentrancy-safe` and non `address(0)-destination-safe`
+    /// @dev Non `address(0)-destination-safe`
     function _chargeFees(address feeCollector, bytes calldata feeParams) internal virtual {
         address feePayer = _msgSender() ;
         uint256 fee = _calculateFee(feeParams) ;
