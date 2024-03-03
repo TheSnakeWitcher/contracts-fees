@@ -26,14 +26,20 @@ contract FeeChargerERC20Test is Test {
         testContract = new FeeChargerERC20(address(token), FEE_AMOUNT);
     }
 
-    function test_hasSpecifiedfeeToken() public {
+    function test_hasSpecifiedFeeToken() public {
         address feeToken = address(testContract.feeToken()) ;
         assertEq(feeToken, address(token));
     }
 
-    function test_hasSpecifiedfeeAmount() public {
+    function test_hasSpecifiedFeeAmount() public {
         uint256 feeAmount = testContract.feeAmount() ;
         assertEq(feeAmount, FEE_AMOUNT);
+    }
+
+    function test_setSpecifiedFeeAmount(uint256 newFeeAmount) public {
+        testContract.setFeeAmount(newFeeAmount) ;
+        uint256 feeAmount = testContract.feeAmount() ;
+        assertEq(feeAmount, newFeeAmount);
     }
 
     function test_chargeFeesTransferSpecifiedAmount() public {
