@@ -27,7 +27,7 @@ contract FeeChargerValueInternal is FeeManagerComponentValue, FeeManagerComponen
         emit FeeCharged(feeCollector, feePayer, fee) ;
     }
 
-    /// @dev Non`reentrancy-safe` and non `address(0)-destination-safe`. Must be called in a
+    /// @dev Non `address(0)-destination-safe`
     function _withdraw(address payable recipient, uint256 amount) internal virtual nonReentrant {
         Address.sendValue(recipient, amount);
     }
