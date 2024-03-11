@@ -28,8 +28,8 @@ contract FeeChargerValueInternal is FeeChargerComponentValue, FeeChargerComponen
     }
 
     /// @dev Non `address(0)-destination-safe`
-    function _withdraw(address payable recipient, uint256 amount) internal virtual nonReentrant {
-        Address.sendValue(recipient, amount); // @NOTE: use PAY opcode when available 
+    function _withdraw(address payable recipient) internal virtual nonReentrant {
+        Address.sendValue(recipient, address(this).balance); // @NOTE: use PAY opcode when available 
     }
 
 }
