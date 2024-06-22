@@ -22,7 +22,7 @@ contract FeeChargerValueInternal is FeeChargerComponentValue, FeeChargerComponen
      *      when calling a payable function is keep in the called contract
      */ 
     function _chargeFees(address feePayer) internal virtual {
-        uint256 fee = feeAmount() ;
+        uint256 fee = _feeAmount ;
         _checkValue(fee) ;
         emit FeeCharged(feePayer, fee) ;
     }

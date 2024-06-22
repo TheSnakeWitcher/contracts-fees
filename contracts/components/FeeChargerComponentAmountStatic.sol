@@ -10,16 +10,12 @@ pragma abicoder v2;
  */
 abstract contract FeeChargerComponentAmountStatic {
 
-    uint256 private _feeAmount ;
+    uint256 internal _feeAmount ;
 
     event FeeAmountChanged(uint256 oldFeeAmount, uint256 newFeeAmount) ;
 
     constructor(uint256 feeAmount_) {
         _feeAmount = feeAmount_ ;
-    }
-
-    function feeAmount() public view virtual returns (uint256) {
-        return _feeAmount ;
     }
 
     function _setFeeAmount(uint256 newFeeAmount) internal virtual {

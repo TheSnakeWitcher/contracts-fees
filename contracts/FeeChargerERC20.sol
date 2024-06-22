@@ -18,7 +18,7 @@ contract FeeChargerERC20 is FeeChargerComponentERC20, FeeChargerComponentAmountS
     /// @dev Non `address(0)-destination-safe`
     function _chargeFees(address feeReceiver) internal virtual {
         address feePayer = _msgSender() ;
-        uint256 fee = feeAmount() ;
+        uint256 fee = _feeAmount ;
 
         _feeToken.safeTransferFrom(feePayer, feeReceiver, fee) ;
         emit FeeCharged(feePayer, address(_feeToken), fee) ;
