@@ -1,7 +1,7 @@
 {
     "name": "@thesnakewitcher/contracts-fees",
     "author": "Alejandro Virelles <thesnakewitcher@gmail.com>",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "fee management contracts",
     "license": "MIT",
     "repository": "https://github.com/TheSnakeWitcher/contract-fees.git",
